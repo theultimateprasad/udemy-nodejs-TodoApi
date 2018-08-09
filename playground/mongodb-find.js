@@ -24,8 +24,8 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', {
     //     console.log('unable to fetch the docs', err);
     // });
 
-    db.collection('Todos').find().sort({'a': 1}).nextObject.then((max)=>{
-        console.log('Todos count:'+max);
+    db.collection('Todos').find().count().then((count)=>{
+        console.log('Todos count:'+count);
         
     },(err)=>{
         console.log('unable to fetch the docs', err);
