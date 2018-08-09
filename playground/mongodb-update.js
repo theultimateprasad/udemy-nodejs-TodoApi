@@ -1,5 +1,8 @@
 //const MongoClient = require('mongodb').MongoClient;
-const {MongoClient,ObjectID} = require('mongodb');
+const {
+    MongoClient,
+    ObjectID
+} = require('mongodb');
 
 MongoClient.connect('mongodb://localhost:27017/TodoApp', {
     useNewUrlParser: true
@@ -12,11 +15,24 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', {
 
     const db = client.db('TodoApp')
 
-    db.collection('User').findOneAndUpdate({_id: new ObjectID('5b6ac783d860151b541cd158')},{
-       $set: {name:'Sagar'}, $inc:{Age:2},$set: {location:'Chandrapur'},$set: {shop:'Ecc'}
-    },{
-        returnOriginal:false
-    }).then((result)=>{
+    db.collection('User').findOneAndUpdate({
+        _id: new ObjectID('5b6ac783d860151b541cd158')
+    }, {
+        $set: {
+            name: 'Sagar'
+        },
+        $inc: {
+            Age: 2
+        },
+        $set: {
+            location: 'Chandrapur'
+        },
+        $set: {
+            shop: 'Ecc'
+        }
+    }, {
+        returnOriginal: false
+    }).then((result) => {
         console.log(result);
     })
 
