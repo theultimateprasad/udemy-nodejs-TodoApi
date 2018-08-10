@@ -11,7 +11,9 @@ app.use(bodyParser.json());
 
 app.post('/todos',(req,res)=>{
     var todo = new Todo({
-        text : req.body.text
+        text:req.body.text,
+        completed : req.body.completed,
+        sensor :req.body.sensor
     });
 
     todo.save().then((doc)=>{
@@ -22,6 +24,14 @@ app.post('/todos',(req,res)=>{
     
 });
 
+
+app.get('/todos',(req,res)=>{
+    Todo.find().then((todos)=>{
+        res.send({todos});
+    },(e)=>{
+        res.status(400).send(e);
+    })
+    });
 
 // var todo = new Todo({
 //     text:'some text here'
